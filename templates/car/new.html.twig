@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ajouter une voiture{% endblock %}
+{% block body %}
+    <div class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
+        <h1 class="text-2xl font-bold text-center mb-6">Ajouter une voiture</h1>
+        {{ form_start(form, {'attr': {'class': 'space-y-4'}}) }}
+            {{ form_row(form.name, {'attr': {'class': 'border rounded p-2 w-full'}}) }}
+            {{ form_row(form.offer, {'attr': {'class': 'border rounded p-2 w-full'}}) }}
+            {{ form_row(form.description, {'attr': {'class': 'border rounded p-2 w-full'}}) }}
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded w-full hover:bg-blue-600">Ajouter</button>
+        {{ form_end(form) }}
+        <div class="mt-4 flex space-x-2">
+            <a href="{{ path('app_admin_cars') }}" class="text-blue-500 hover:underline">Retour à la liste</a>
+            {# <a href="{{ path('app_car_edit', {'id': car.id}) }}" class="text-blue-500 hover:underline">Modifier une voiture</a> #}
+        </div>
+    </div>
+{% endblock %}

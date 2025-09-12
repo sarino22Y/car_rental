@@ -1,0 +1,22 @@
+# Symfony
+/var/*
+/vendor/*
+/.env.local
+/.env.*.local
+/config/secrets/*
+/public/bundles/*
+/public/build/*
+/public/uploads/*
+/bin/console
+/phpunit.xml.dist
+/composer.lock
+/symfony.lock
+
+# Node.js (pour TailwindCSS)
+/node_modules/
+/package-lock.json
+
+# Cache et logs
+/.idea/
+/.vscode/
+*.log

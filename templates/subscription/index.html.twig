@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}Mes Abonnements{% endblock %}
+{% block body %}
+    <div class="container mx-auto px-4">
+        <h1 class="text-2xl font-bold text-center my-6">Mes Abonnements</h1>
+        <a href="{{ path('app_subscription_new') }}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded mb-4 hover:bg-blue-600">Nouvel abonnement</a>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for subscription in subscriptions %}
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h3 class="text-lg font-semibold">{{ subscription.car.name }}</h3>
+                    <p class="text-gray-600">Du {{ subscription.startDate|date('d/m/Y') }} au {{ subscription.endDate ? subscription.endDate|date('d/m/Y') : 'En cours' }}</p>
+                </div>
+            {% else %}
+                <p class="text-gray-500">Aucun abonnement.</p>
+            {% endfor %}
+        </div>
+        <a href="{{ path('app_logout') }}" class="inline-block text-blue-500 hover:underline mt-4">Se déconnecter</a>
+    </div>
+{% endblock %}
