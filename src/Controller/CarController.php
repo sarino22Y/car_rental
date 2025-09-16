@@ -23,7 +23,7 @@ final class CarController extends AbstractController
     }
 
     #[Route('/admin/cars', name: 'app_admin_cars')]
-    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_OWNER')]
     public function index(CarRepository $carRepository): Response
     {
         $owner = $this->getUser();
@@ -35,7 +35,7 @@ final class CarController extends AbstractController
     }
 
     #[Route('/admin/car/new', name: 'app_car_new')]
-    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_OWNER')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $car = new Car();
@@ -56,7 +56,7 @@ final class CarController extends AbstractController
     }
 
     #[Route('/admin/cars/{id}/edit', name: 'app_car_edit')]
-    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_OWNER')]
     public function edit(Request $request, Car $car, EntityManagerInterface $entityManager): Response
     {
         if ($car->getOwner() !== $this->getUser()) {
@@ -78,7 +78,7 @@ final class CarController extends AbstractController
     }
 
     #[Route('/admin/cars/{id}/delete', name: 'app_car_delete', methods: ['POST'])]
-    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_OWNER')]
     public function delete(Request $request, Car $car, EntityManagerInterface $entityManager): Response
     {
         if ($car->getOwner() !== $this->getUser()) {

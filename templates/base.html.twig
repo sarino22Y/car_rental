@@ -9,21 +9,22 @@
 <body class="bg-gray-100">
     <nav class="bg-blue-600 text-white p-4">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="{{ path('app_cars_public') }}" class="text-xl font-bold">Car Rental</a>
+            <a href="{{ path('app_home') }}" class="text-xl font-bold">Car Rental</a>
             <div class="space-x-4">
+                <a href="{{ path('app_home') }}" class="hover:underline">Accueil</a>
                 <a href="{{ path('app_cars_public') }}" class="hover:underline">Voitures Disponibles</a>
                 {% if app.user %}
-                {% if is_granted('ROLE_USER') %}
-                <a href="{{ path('app_admin_cars') }}" class="hover:underline">Mes Voitures</a>
-                <a href="{{ path('app_car_new') }}" class="hover:underline">Ajouter Voiture</a>
-                {% elseif is_granted('ROLE_CLIENT') %}
-                <a href="{{ path('app_client_dashboard') }}" class="hover:underline">Tableau de bord</a>
-                <a href="{{ path('app_subscription_index') }}" class="hover:underline">Mes Abonnements</a>
-                <a href="{{ path('app_subscription_new') }}" class="hover:underline">Nouvel Abonnement</a>
-                {% endif %}
-                <a href="{{ path('app_logout') }}" class="hover:underline">Déconnexion</a>
+                    {% if is_granted('ROLE_OWNER') %}
+                        <a href="{{ path('app_admin_cars') }}" class="hover:underline">Mes Voitures</a>
+                        <a href="{{ path('app_car_new') }}" class="hover:underline">Ajouter Voiture</a>
+                    {% elseif is_granted('ROLE_CLIENT') %}
+                        <a href="{{ path('app_client_dashboard') }}" class="hover:underline">Tableau de bord</a>
+                        <a href="{{ path('app_subscription_index') }}" class="hover:underline">Mes Abonnements</a>
+                        <a href="{{ path('app_subscription_new') }}" class="hover:underline">Nouvel Abonnement</a>
+                    {% endif %}
+                    <a href="{{ path('app_logout') }}" class="hover:underline">Déconnexion</a>
                 {% else %}
-                <a href="{{ path('app_login') }}" class="hover:underline">Connexion</a>
+                    <a href="{{ path('app_login') }}" class="hover:underline">Connexion</a>
                 {% endif %}
             </div>
         </div>

@@ -21,7 +21,7 @@
         </div>
         <div class="mt-4 flex space-x-2">
             {% if app.user %}
-                {% if is_granted('ROLE_USER') %}
+                {% if is_granted('ROLE_OWNER') %}
                     <a href="{{ path('app_admin_cars') }}" class="text-blue-500 hover:underline">Gérer mes voitures</a>
                 {% elseif is_granted('ROLE_CLIENT') %}
                     <a href="{{ path('app_client_dashboard') }}" class="text-blue-500 hover:underline">Mon tableau de bord</a>

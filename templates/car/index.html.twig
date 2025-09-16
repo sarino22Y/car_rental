@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 {% block title %}Mes Voitures{% endblock %}
 {% block body %}
-    <h1 class="text-2xl font-bold text-center my-6">Mes Voitures</h1>
     <div class="container mx-auto px-4">
-        <a href="{{ path('app_car_new') }}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded mb-4 hover:bg-blue-600">Ajouter une voiture</a>
+        <h1 class="text-2xl font-bold text-center my-6">Mes Voitures</h1>
+        <div class="flex justify-center space-x-4 mb-6">
+            <a href="{{ path('app_car_new') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Ajouter une voiture</a>
+            <a href="{{ path('app_cars_public') }}" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Voir page publique</a>
+        </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {% for car in cars %}
                 <div class="bg-white shadow-md rounded-lg p-6">

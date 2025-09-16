@@ -23,7 +23,7 @@ class CarFixture extends Fixture
     {
         $owner = new Owner();
         $owner->setEmail('owner@example.com');
-        $owner->setRoles(['ROLE_USER']);
+        $owner->setRoles(['ROLE_OWNER']);
         $owner->setPassword($this->passwordHasher->hashPassword($owner, 'password123'));
         $manager->persist($owner);
 
