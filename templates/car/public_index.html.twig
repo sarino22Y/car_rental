@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %}Voitures Disponibles{% endblock %}
+{% block body %}
+    <div class="container mx-auto px-4">
+        <h1 class="text-2xl font-bold text-center my-6">Voitures Disponibles</h1>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for car in cars %}
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <h2 class="text-xl font-semibold">{{ car.name }}</h2>
+                    <p class="text-gray-600">Offre: {{ car.offer|capitalize }}</p>
+                    {% if car.description %}
+                        <p class="text-gray-500 mt-2">{{ car.description }}</p>
+                    {% endif %}
+                    {% if app.user and is_granted('ROLE_CLIENT') %}
+                        <a href="{{ path('app_subscription_new') }}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-600">S'abonner</a>
+                    {% else %}
+                        <a href="{{ path('app_login') }}" class="inline-block text-blue-500 hover:underline mt-4">Connectez-vous pour vous abonner</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        <div class="mt-4 flex space-x-2">
+            {% if app.user %}
+                {% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('app_admin_cars') }}" class="text-blue-500 hover:underline">Gérer mes voitures</a>
+                {% elseif is_granted('ROLE_CLIENT') %}
+                    <a href="{{ path('app_client_dashboard') }}" class="text-blue-500 hover:underline">Mon tableau de bord</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

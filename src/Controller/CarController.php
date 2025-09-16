@@ -14,6 +14,14 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class CarController extends AbstractController
 {
+    #[Route('/cars', name: 'app_cars_public')]
+    public function publicIndex(CarRepository $carRepository): Response
+    {
+        return $this->render('car/public_index.html.twig', [
+            'cars' => $carRepository->findAll(),
+        ]);
+    }
+
     #[Route('/admin/cars', name: 'app_admin_cars')]
     #[IsGranted('ROLE_USER')]
     public function index(CarRepository $carRepository): Response

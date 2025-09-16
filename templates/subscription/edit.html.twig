@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modifier Abonnement{% endblock %}
+{% block body %}
+    <div class="container mx-auto px-4">
+        <h1 class="text-2xl font-bold text-center my-6">Modifier Abonnement</h1>
+        <div class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-6">
+            {{ form_start(form, {'attr': {'class': 'space-y-4'}}) }}
+                {{ form_row(form.startDate, {'attr': {'class': 'border rounded p-2 w-full'}}) }}
+                {{ form_row(form.endDate, {'attr': {'class': 'border rounded p-2 w-full'}}) }}
+                {{ form_row(form.car, {'attr': {'class': 'border rounded p-2 w-full'}}) }}
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded w-full hover:bg-blue-600">Enregistrer</button>
+            {{ form_end(form) }}
+            <div class="mt-4 flex space-x-2">
+                <a href="{{ path('app_subscription_index') }}" class="text-blue-500 hover:underline">Retour à la liste</a>
+                <a href="{{ path('app_subscription_new') }}" class="text-blue-500 hover:underline">Nouvel abonnement</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
